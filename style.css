@@ -1,0 +1,176 @@
+/*
+ * Hack-a-thon Stylesheet
+ * Inspired by the "obnoxiously awesome" poster and sleek tech aesthetics.
+ * This CSS aims to create a vibrant, modern, and engaging look for the Hack-a-thon webpage.
+ * It uses a dark theme with glowing elements and responsive design principles.
+ */
+
+/* Google Fonts - Inter for clean, modern typography */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap');
+
+/* Base Styles */
+:root {
+    /* Color Palette inspired by the poster */
+    --primary-blue: #007bff; /* A vibrant blue */
+    --accent-orange: #FF8C00; /* A bold orange */
+    --dark-bg: #1a1a2e; /* Deep dark background */
+    --light-text: #e0e0e0; /* Light text for dark background */
+    --glow-color-1: #00c853; /* Greenish glow from poster */
+    --glow-color-2: #ffc107; /* Yellowish glow from poster */
+    --border-color: #3a3a5a; /* Subtle border for elements */
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: var(--dark-bg); /* Deep dark background */
+    color: var(--light-text);
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Align to top, not center vertically */
+    min-height: 100vh; /* Ensure it takes full viewport height */
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+}
+
+/* Main Container */
+.container {
+    width: 90%; /* Fluid width */
+    max-width: 900px; /* Max width for larger screens */
+    margin: 40px auto; /* More margin top/bottom */
+    background: rgba(25, 25, 40, 0.9); /* Slightly lighter dark background with transparency */
+    padding: 30px;
+    border-radius: 20px; /* More rounded corners */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), /* Stronger shadow */
+                0 0 40px rgba(0, 200, 83, 0.2); /* Subtle green glow */
+    border: 1px solid var(--border-color); /* Subtle border */
+    position: relative; /* For pseudo-elements */
+    overflow: hidden; /* Clip any overflowing glow effects */
+}
+
+/* Glowing background elements (mimicking tech patterns) */
+.container::before,
+.container::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px); /* Soft glow */
+    opacity: 0.4;
+    z-index: -1; /* Behind content */
+}
+
+.container::before {
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle, var(--glow-color-1), transparent);
+    top: -50px;
+    left: -50px;
+}
+
+.container::after {
+    width: 250px;
+    height: 250px;
+    background: radial-gradient(circle, var(--glow-color-2), transparent);
+    bottom: -70px;
+    right: -70px;
+}
+
+
+/* Typography */
+h1 {
+    font-size: 3.5em; /* Larger, bolder title */
+    text-align: center;
+    color: var(--light-text);
+    margin-bottom: 20px;
+    text-shadow: 0 0 15px var(--glow-color-1), 0 0 30px var(--glow-color-2); /* Dual color glow */
+    letter-spacing: 2px;
+    font-weight: 800; /* Extra bold */
+    line-height: 1.1;
+}
+
+h2 {
+    font-size: 2.2em;
+    text-align: center;
+    color: var(--accent-orange); /* Use accent color for subheadings */
+    margin-top: 40px;
+    margin-bottom: 20px;
+    font-weight: 700;
+    text-shadow: 0 0 10px rgba(255, 140, 0, 0.5); /* Orange glow */
+}
+
+p {
+    font-size: 1.1em;
+    text-align: center;
+    margin-bottom: 25px;
+    max-width: 700px; /* Constrain paragraph width for readability */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Airtable Embed Specific Styles */
+.airtable-embed {
+    border: 2px solid var(--border-color) !important; /* Make border more prominent */
+    border-radius: 15px; /* Rounded corners for the iframe */
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3), 0 0 20px rgba(0, 200, 83, 0.15); /* Subtle glow for iframe */
+    display: block; /* Ensure it takes full width */
+    margin: 30px auto; /* Center the iframe */
+    background: rgba(0, 0, 0, 0.2) !important; /* Slightly transparent background for iframe */
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .container {
+        width: 95%;
+        margin: 20px auto;
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 2.5em;
+    }
+
+    h2 {
+        font-size: 1.8em;
+    }
+
+    p {
+        font-size: 1em;
+    }
+
+    .container::before,
+    .container::after {
+        filter: blur(60px); /* Less blur on smaller screens */
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 2em;
+    }
+
+    h2 {
+        font-size: 1.5em;
+    }
+
+    p {
+        font-size: 0.95em;
+    }
+
+    .airtable-embed {
+        height: 450px; /* Adjust height for very small screens if needed */
+    }
+}
+
+/* Add more stylistic elements like glowing lines, subtle animations, etc. */
+/* Example for a subtle pulsing glow on the container (optional) */
+/*
+@keyframes pulseGlow {
+    0% { box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 40px rgba(0, 200, 83, 0.2); }
+    50% { box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), 0 0 50px rgba(0, 200, 83, 0.4); }
+    100% { box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 40px rgba(0, 200, 83, 0.2); }
+}
+.container {
+    animation: pulseGlow 4s infinite alternate ease-in-out;
+}
+*/
